@@ -18,34 +18,34 @@
 
     <div class="uploadprogress" style="display: none;">
       <div class="progress" animate="true" value="0" type="success">
-        <div class="progress-bar progress-bar-success" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent < 100 ? percent : 100) + '%'}" aria-valuetext="0%" aria-labelledby="progressbar" style="min-width: 0px; width: 0%;" ng-transclude=""></div>
+        <div class="progress-bar progress-bar-success" [ngClass]="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent < 100 ? percent : 100) + '%'}" aria-valuetext="0%" aria-labelledby="progressbar" style="min-width: 0px; width: 0%;" ng-transclude=""></div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="petek" *ngFor="let app of apps">
-  <div  class="os" ng-class="::{'android-icon': app.type=='ANDROID', 'ios-icon': app.type=='IOS','wp-icon': app.type=='WP'}"></div>
+  <div  class="os" [ngClass]="app.type=='ANDROID'?'android-icon':'ios-icon'"></div>
   <div ng-show="app.source == 'MC' && !app.mobileWeb" class="os-version">{{app.osVersion}}</div>
   <div class="application-top-details">
-    <div ng-if="app.source == 'MC'" ng-class="!app.instrumentedApplicationExist && !app.applicationExist ? 'app-icon-blur' : 'app-icon'">
+    <div ng-if="app.source == 'MC'" [ngClass]="!app.instrumentedApplicationExist && !app.applicationExist ? 'app-icon-blur' : 'app-icon'">
       <img class="petek-app-icon" src="data:image/png;base64,{{app.icon}}" border="0"/>
       <div ng-show='!app.instrumentedApplicationExist && !app.applicationExist' class="icon-mask"></div>
     </div>
     <div ng-if="app.id == 'MC.Browser'" class="app-icon">
-      <div class="petek-app-icon" ng-class="app.browserIconClass"></div>
+      <div class="petek-app-icon" [ngClass]="app.browserIconClass"></div>
     </div>
     <div ng-if="app.source == 'MC' && !app.mobileWeb" class="petek-control">
-      <div class="remove" ng-class="app.isBeingRemoved ? 'remove-disabled' : ''"  title="{{(app.isBeingRemoved ? 'applications.applicationIsBeingRemoved' : 'applications.deleteAllVersions')}}" test-id="applications-removeApp"></div>
+      <div class="remove" [ngClass]="app.isBeingRemoved ? 'remove-disabled' : ''"  title="{{(app.isBeingRemoved ? 'applications.applicationIsBeingRemoved' : 'applications.deleteAllVersions')}}" test-id="applications-removeApp"></div>
       <div class="info" ng-click="ctrl.openVersionView(app); $event.stopPropagation();" title="{{'devices.moreInformation'}}" test-id="applications-appInfo"></div>
-      <div class="integration" ng-class="app.type=='WP' ? 'integration-disabled': ''" ng-show="!!ctrl.management && extendedServicesStatus === 1 && !isInSrflab" ng-click="ctrl.openIntegrationDialog(app, $event, $index); $event.stopPropagation();" test-id="integration-trigger-point"></div>
+      <div class="integration" [ngClass]="app.type=='WP' ? 'integration-disabled': ''" ng-show="!!ctrl.management && extendedServicesStatus === 1 && !isInSrflab" ng-click="ctrl.openIntegrationDialog(app, $event, $index); $event.stopPropagation();" test-id="integration-trigger-point"></div>
     </div>
     <div class="app-alert app-not-exist"  title="{{'applications.notExistAfterUpgrade'}}"> </div>
 
   </div>
   <div class="app-inner-details">
     <div class="application-petek-title" title="{{app.name}}" test-id="applications-appName">{{app.name}}</div>
-    <div ng-show="app.source == 'MC' && !app.mobileWeb" ng-class="(!app.instrumentedApplicationExist && !app.applicationExist && !app.mobileWeb) ? 'app-form-factor blurry-text':'app-form-factor'">{{app.formFactors}}</div>
+    <div ng-show="app.source == 'MC' && !app.mobileWeb" [ngClass]="(!app.instrumentedApplicationExist && !app.applicationExist && !app.mobileWeb) ? 'app-form-factor blurry-text':'app-form-factor'">{{app.formFactors}}</div>
 
     <div ng-click="ctrl.openVersionView(app); $event.stopPropagation();" class="app-version-pass-cont">
       <div class="app-version-pass" ng-show="app.source == 'MC' && !app.mobileWeb">
@@ -66,21 +66,7 @@
         {{app.appBuildVersion}}
       </div>
     </div>
+  </div>
 
-
-    <div class="work-with-packaged-version" ng-show="ctrl.isShowWorkWithPackagedVersionCheckbox(app)" ng-click="$event.stopPropagation();">
-      <div class="mc-checkbox-container">
-        <input type="checkbox" ng-model="app.instrumented" id="{{app.id}}+instrumented" name="{{app.id}}+instrumented" test-id="instrumentedApplicationExistCheckbox" ng-disabled="!app.instrumentedApplicationExist || !app.applicationExist">
-        <label for="{{app.id}}+instrumented"></label>
-        <label for="{{app.id}}+instrumented" class="packaged-version-text" title="{{'applications.usingPackagedVersion'}}">{{'applications.usingPackagedVersion'}}</label>
-      </div>
-    </div>
-  </div>
-  <div ng-show="::app.mobileWeb" class="app-desc" test-id="applications-MobileWebDescription">
-webapp
-  </div>
-  <div ng-show="::app.id == 'MC.Browser'" class="app-desc" test-id="applications-NativeBrowserDescription">
-    native
-  </div>
 </div>
 
