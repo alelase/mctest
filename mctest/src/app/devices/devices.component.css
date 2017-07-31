@@ -22,3 +22,51 @@
   border-left: 1px solid #d5d5d5;
   margin: 0 7px;
 }
+
+.add-device-container {
+  cursor: pointer;
+}
+
+.ios-icon {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAMAAACeyVWkAAAAclBMV…5fyzqGKyp+3MSLrwl16kFpEWduHxGruLN9CQC7MnWWyRf+3xiDo/RH3gAAAABJRU5ErkJggg==);
+}
+
+.android-icon {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAMAAACeyVWkAAAAUVBMV…iXxqXetvpyb6WwUlRCQd/+jFSQh5/90PdR4SZgdNj1pA+y9w/TVWktbAAAAABJRU5ErkJggg==);
+}
+
+.os {
+  border-style: none;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
+.device-inner-details {
+  height: 87px;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(100% - 20px);
+  padding-right: 20px;
+  margin-left: 20px;
+  background: inherit;
+  color: #999999;
+  top: 176px;
+  border-top: 1px solid rgba(204, 204, 204, 0.5);
+}
+
+.reservation {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  height: 52px;
+  width: 100%;
+  background-color: #fafafa;
+  border-top: 1px solid rgba(204, 204, 204, 0.5);
+}
+
+
+

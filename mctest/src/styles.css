@@ -2,9 +2,32 @@
 body {
   margin: 0;
   height: 100vh;
+  background-color: #FAFAFA;
 }
 
 p {
   padding: 0;
   margin: 0;
+}
+
+
+.petek.reorder-animate {
+  position: absolute;
+  transition: transform 1s;
+}
+
+.petek {
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  float: left;
+  width: 204px;
+  height: 327px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.065);
+  background-color: #ffffff;
+  padding: 0;
+  margin: 10px;
+  border-top: 4.5px solid transparent;
+  transition: transform 0.25s;
 }

@@ -4,3 +4,44 @@
     <div class="separator"></div>
   </div>
 </div>
+
+
+<div class="petek add-device-container" ng-click="ctrl.showHowToPanel();" style="z-index: 70; transform: translate(0px, 0px);">
+  <div class="add-device-icon">
+    <div class="petek-device-icon"></div>
+  </div>
+  <div class="add-device-text ng-binding">Connect a Device</div>
+  <div class="add-device-subtitle" ></div>
+</div>
+
+<div class="petek reorder-animate ng-scope registered" *ngFor="let device of devices" style="z-index: 60; transform: translate(224px, 0px);">
+  <div class="device-top-details">
+    <div class="device-img iphone6" border="0"></div>
+    <div class="play" title="Open device remotely"></div>
+    <div class="petek-control">
+      <div class="remove" title="Remove device"></div>
+      <div class="unlock disableControl" title="Unlock device"></div>
+      <div class="info" title="More information"></div>
+    </div>
+  </div>
+  <div class="os ios-icon" ng-class="::{ 'android-icon': device.osType=='ANDROID', 'ios-icon': device.osType=='IOS','wp-icon': device.osType=='WP'}" ng-dblclick="ctrl.openVnc(device)" test-id="devices-deviceOsIcon"></div>
+  <div class="os-version">10.2.1</div>
+
+  <div class="device-inner-details">
+    <input class="name" ng-model="device.logicName" title="iPhone 6s">
+    <div class="edit-icon" test-id="devices-deviceEditNameIcon"></div>
+    <div class="manufacturer ng-binding ng-scope" style="-webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text; cursor:text;" title="Apple iPhone 6s">Apple iPhone 6s</div>
+    <div class="id ng-binding" style="-webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text; cursor:text;" title="d692aab79c2ee84a219def0ed9f29a1c9bab52a3">d692aab79c2ee84a219def0ed9f29a1c9bab52a3 </div>
+    <div class="device-latency power-4" title="Remote view latency: 6 ms."></div>
+  </div>
+
+  <div class="reservation" ng-switch="device.reservationAvailability" ng-click="ctrl.openDeviceInfo($event, device, $index); $event.stopPropagation();">
+    <div ng-switch-when="notReserved" class="ng-scope">
+      <div class="details">
+        <span ng-if="device.deviceAvailability == 'registered'" class="text ng-binding ng-scope" test-id="deviceStatus-available">Available</span>
+        <span class="time ng-binding ng-hide" ng-show="device.nextReservationTimeStart"> Until:  Invalid date</span></div>
+    </div><!-- end ngSwitchWhen: -->
+
+  </div>
+
+</div>

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 //import { AppsComponent } from './apps/apps.component';
 //import { DevicesComponent } from './devices/devices.component';
 import { AppRoutingModule, routingComponents } from './app.routing';
+import {Apps} from "./apps";
 
 
 @NgModule({
@@ -14,13 +15,13 @@ import { AppRoutingModule, routingComponents } from './app.routing';
     AppComponent,
     routingComponents
   ],
-  imports: [ BrowserModule, AppRoutingModule],
+  imports: [ BrowserModule, AppRoutingModule, HttpModule],
   // imports: [
   //   BrowserModule,
   //   FormsModule,
   //   HttpModule
   // ],
-  providers: [],
+  providers: [Apps],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
